@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumpleaños Maite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #8a2be2;
+        }
+        #countdown {
+            font-size: 2em;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #eee;
+            border-radius: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Cumpleaños de Maite, la bruja malvada!</h1>
+        <div id="countdown"></div>
+    </div>
+
+    <script>
+        // Establecer la fecha objetivo (20 de noviembre a las 00:00:00)
+        const countDownDate = new Date("Nov 20, 2024 00:00:00").getTime();
+
+        // Actualizar la cuenta atrás cada segundo
+        const countdownFunction = setInterval(function() {
+
+            // Obtener la fecha y hora actual
+            const now = new Date().getTime();
+
+            // Calcular la diferencia entre la fecha actual y la fecha objetivo
+            const distance = countDownDate - now;
+
+            // Cálculos para días, horas, minutos y segundos
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Mostrar la cuenta atrás en el elemento con id="countdown"
+            document.getElementById("countdown").innerHTML =
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // Si la cuenta llega a cero
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "¡Feliz cumpleaños, Maite!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
